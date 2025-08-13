@@ -1,0 +1,11 @@
+<launch>
+  <!-- Dummy mission routine launch -->
+  <node pkg="barracuda_mission_planner"
+        type="mission_routine_node.py"
+        name="mission_routine"
+        output="screen">
+    <param name="rate_hz" value="1.0" />
+    <param name="steps" value="arm,dive,survey,surface,disarm" />
+  </node>
+</launch>
+

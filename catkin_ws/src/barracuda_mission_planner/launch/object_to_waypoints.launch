@@ -1,0 +1,12 @@
+<launch>
+  <node pkg="barracuda_mission_planner"
+        type="object_to_waypoints_node.py"
+        name="object_to_waypoints"
+        output="screen"
+        ns="barracuda">
+    <!-- Adjust topics as needed -->
+    <param name="objectposearray_topic" value="object_pose_array" />
+    <param name="planned_path_topic" value="planned_path" />
+  </node>
+</launch>
+

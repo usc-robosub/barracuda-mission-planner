@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  mission_planner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: barracuda_mission_planner
+    network_mode: host
+    environment:
+      - ROS_DISTRO=noetic
+      - ROS_PACKAGE_PATH=/root/catkin_ws/src
+
