@@ -1,0 +1,16 @@
+<launch>
+  <!-- Launch all core nodes -->
+  <include file="$(find barracuda_mission_planner)/launch/all_nodes.launch" />
+
+  <!-- Launch test publisher/subscriber to exercise the pipeline -->
+  <node pkg="barracuda_mission_planner"
+        type="test_pipeline_node.py"
+        name="test_pipeline"
+        output="screen">
+    <param name="namespace" value="/barracuda" />
+    <param name="frame_id" value="map" />
+    <param name="publish_rate" value="2.0" />
+    <param name="gate_position" value="{x: 5.0, y: 1.5, z: 0.0}" />
+  </node>
+</launch>
+

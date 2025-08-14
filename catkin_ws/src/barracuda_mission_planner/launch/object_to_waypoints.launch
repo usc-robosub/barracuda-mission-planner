@@ -6,7 +6,7 @@
         ns="barracuda">
     <!-- Adjust topics as needed -->
     <param name="objectposearray_topic" value="object_pose_array" />
-    <param name="planned_path_topic" value="planned_path" />
+    <!-- Service for querying object positions -->
+    <param name="get_position_service" value="get_object_position" />
   </node>
 </launch>
-

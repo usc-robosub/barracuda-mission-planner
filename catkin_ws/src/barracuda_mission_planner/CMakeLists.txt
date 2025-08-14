@@ -20,5 +20,7 @@ catkin_install_python(
   PROGRAMS
     scripts/mission_routine_node.py
     scripts/object_to_waypoints_node.py
+    scripts/mission_command_sequencer_node.py
+    scripts/test_pipeline_node.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

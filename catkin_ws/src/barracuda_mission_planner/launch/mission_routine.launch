@@ -1,11 +1,18 @@
 <launch>
-  <!-- Dummy mission routine launch -->
+  <!-- Mission routine calls the object position service and publishes waypoints -->
   <node pkg="barracuda_mission_planner"
         type="mission_routine_node.py"
         name="mission_routine"
         output="screen">
+    <!-- Keep these for future routine logic -->
     <param name="rate_hz" value="1.0" />
     <param name="steps" value="arm,dive,survey,surface,disarm" />
+
+    <!-- Publish planned path in the same namespace as detectors -->
+    <param name="planned_path_topic" value="/barracuda/planned_path" />
+    <!-- Call into the namespaced service provided by object_to_waypoints node -->
+    <param name="get_position_service" value="/barracuda/get_object_position" />
+    <!-- Which object class to seek -->
+    <param name="target_object_class" value="gate" />
   </node>
 </launch>
-

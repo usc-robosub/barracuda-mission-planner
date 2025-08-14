@@ -1,0 +1,7 @@
+# Example mission command sequence
+# Lines starting with # are ignored
+
+start
+# ... insert other commands as your planner supports
+stop
+

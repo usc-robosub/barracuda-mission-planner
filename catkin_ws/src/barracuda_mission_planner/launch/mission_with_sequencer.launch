@@ -1,0 +1,20 @@
+<launch>
+  <!-- Start object-to-pose service provider -->
+  <include file="$(find barracuda_mission_planner)/launch/object_to_waypoints.launch" />
+
+  <!-- Start mission planner node that will publish 'ready' on /mission/status -->
+  <include file="$(find barracuda_mission_planner)/launch/mission_routine.launch" />
+
+  <!-- Start the command sequencer -->
+  <node pkg="barracuda_mission_planner"
+        type="mission_command_sequencer_node.py"
+        name="mission_command_sequencer"
+        output="screen">
+    <param name="commands_file" value="config/commands.txt" />
+    <param name="package_share_dir" value="$(find barracuda_mission_planner)" />
+    <param name="command_topic" value="/mission/command" />
+    <param name="status_topic" value="/mission/status" />
+    <param name="ready_token" value="ready" />
+  </node>
+</launch>
+

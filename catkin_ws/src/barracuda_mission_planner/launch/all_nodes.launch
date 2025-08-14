@@ -1,0 +1,34 @@
+<launch>
+  <!-- Object-to-pose service provider (namespaced) -->
+  <node pkg="barracuda_mission_planner"
+        type="object_to_waypoints_node.py"
+        name="object_to_waypoints"
+        output="screen"
+        ns="barracuda">
+    <param name="objectposearray_topic" value="object_pose_array" />
+    <param name="get_position_service" value="get_object_position" />
+  </node>
+
+  <!-- Mission planner (publishes waypoints and 'ready') -->
+  <node pkg="barracuda_mission_planner"
+        type="mission_routine_node.py"
+        name="mission_routine"
+        output="screen">
+    <param name="planned_path_topic" value="/barracuda/planned_path" />
+    <param name="get_position_service" value="/barracuda/get_object_position" />
+    <param name="target_object_class" value="gate" />
+  </node>
+
+  <!-- Command sequencer -->
+  <node pkg="barracuda_mission_planner"
+        type="mission_command_sequencer_node.py"
+        name="mission_command_sequencer"
+        output="screen">
+    <param name="commands_file" value="config/commands.txt" />
+    <param name="package_share_dir" value="$(find barracuda_mission_planner)" />
+    <param name="command_topic" value="/mission/command" />
+    <param name="status_topic" value="/mission/status" />
+    <param name="ready_token" value="ready" />
+  </node>
+</launch>
+

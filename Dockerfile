@@ -19,4 +19,3 @@ WORKDIR /opt
 
 CMD ["/bin/bash", "/opt/barracuda-mission-planner/entrypoint.sh"]
 
-
